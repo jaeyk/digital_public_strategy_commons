@@ -1,0 +1,29 @@
+name: Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Python model tests
+        run: python -m unittest discover tests
+      - name: Website engine matches the Python engine
+        run: node tests/site_engine.test.mjs
+      - name: Website data is up to date with the models
+        run: |
+          python -m models.export_site_data
+          git diff --exit-code -- docs/data/model.json docs/data/parity.json || {
+            echo "docs/data is out of date. Run: python -m models.export_site_data"; exit 1; }

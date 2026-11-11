@@ -1,0 +1,32 @@
+name: Suggest a strategy
+description: Propose a strategy that is missing, or improve how one is described.
+title: "Strategy: "
+labels: ["strategy"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Strategy name
+    validations:
+      required: true
+  - type: textarea
+    id: mechanism
+    attributes:
+      label: How does it work?
+      description: What does a government actually do, and how does that change things?
+    validations:
+      required: true
+  - type: textarea
+    id: effects
+    attributes:
+      label: What does it change, and for whom?
+      description: Which kinds of capacity (talent, authority, funding, policy fit, shared infrastructure, trust) and which obstacles (vendor power, rules, fragmentation, trust) does it affect?
+  - type: textarea
+    id: relationships
+    attributes:
+      label: Does it need or clash with other strategies? (optional)
+      description: For example "only works with a core team", or "works against cooperative purchasing".
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples (optional)

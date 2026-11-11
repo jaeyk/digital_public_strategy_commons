@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Civic Tech Digital Public Strategy Commons</title>
+  <meta name="description" content="Pick your agency, your goals, and your strategies. Make a guess, then see what the model suggests.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232a78d6'/%3E%3Cpath d='M8 22l6-7 4 4 6-9' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+<main class="page">
+  <header class="intro">
+    <h1>Civic Tech Digital Public Strategy Commons</h1>
+    <p class="lede">Every plan to improve government technology rests on a theory of how change happens. Try yours: pick your agency, your goals, and your strategies, make a guess, and see what our model suggests.</p>
+    <p class="note">All models are wrong. This one is useful only as a thought experiment: a way to question your assumptions, not a prediction.</p>
+  </header>
+
+  <ol class="progress" aria-label="Steps">
+    <li data-step="1">Your agency</li>
+    <li data-step="2">Your goals</li>
+    <li data-step="3">Your strategies</li>
+    <li data-step="4">Your guess</li>
+  </ol>
+
+  <section class="step" data-step="1">
+    <h2>Which is closest to your agency?</h2>
+    <div class="matrix" role="radiogroup" aria-label="Agency type">
+      <span class="axis-y">More committed leadership</span>
+      <span class="axis-x">More people and money</span>
+      <div class="quadrants" id="agencies"></div>
+    </div>
+  </section>
+
+  <section class="step" data-step="2" hidden>
+    <h2>What do you most want to achieve?</h2>
+    <p class="hint">Choose one or more.</p>
+    <div class="cards" id="goals"></div>
+  </section>
+
+  <section class="step" data-step="3" hidden>
+    <h2>Which strategies would you try?</h2>
+    <p class="hint">Choose the ones you would start with. Most plans have two to five.</p>
+    <div class="cards strategies" id="strategies"></div>
+  </section>
+
+  <section class="step" data-step="4" hidden>
+    <h2>How well do you think your plan will do?</h2>
+    <p class="hint" id="plan-summary"></p>
+    <div id="guesses"></div>
+  </section>
+
+  <nav class="step-buttons">
+    <button type="button" class="button secondary" id="back">Back</button>
+    <button type="button" class="button" id="next" disabled>Next</button>
+  </nav>
+</main>
+<footer class="page footer">
+  <p>Developed by <a href="https://jaeyk.github.io/">Jae Yeon Kim</a>. Open source on <a href="https://github.com/jaeyk/digital_public_strategy_commons">GitHub</a>.</p>
+</footer>
+<script type="module" src="assets/steps.js"></script>
+</body>
+</html>

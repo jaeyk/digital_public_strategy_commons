@@ -1,0 +1,39 @@
+name: Write a theory of change
+description: Describe the path you think works for a particular kind of agency or place, and the assumptions it rests on.
+title: "Theory of change: "
+labels: ["theory-of-change"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Different cases need different models. Describe one path from today to a government that builds good things, fast and at scale. Plain language is perfect.
+  - type: textarea
+    id: context
+    attributes:
+      label: For which kind of agency or place?
+      description: Size, resources, motivation, political situation, and anything else that matters.
+    validations:
+      required: true
+  - type: textarea
+    id: path
+    attributes:
+      label: The path
+      description: The steps, in order. What happens first, and what does it make possible next?
+    validations:
+      required: true
+  - type: textarea
+    id: assumptions
+    attributes:
+      label: The assumptions it rests on
+      description: What has to be true for this to work? Which of these are you least sure about?
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: What could knock it off course?
+      description: Elections, budget cuts, vendor responses, AI, loss of key people, and so on.
+  - type: input
+    id: setup
+    attributes:
+      label: Link to a setup on the website that resembles it (optional)

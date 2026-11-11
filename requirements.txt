@@ -1,1 +1,2 @@
 open_spiel==2.0.2
+numpy==2.5.4

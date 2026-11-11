@@ -1,0 +1,50 @@
+name: Challenge an assumption
+description: Tell us a number or relationship in the models that you think is wrong, and why. No coding needed.
+title: "Assumption change: "
+labels: ["assumption"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. All models are wrong; your experience helps us find where. If you came from the website's "Change the assumptions" section, the changes you made are filled in below.
+  - type: textarea
+    id: assumption
+    attributes:
+      label: Which assumption?
+      description: The relationship or number you want to change, with the current value and the value you propose.
+    validations:
+      required: true
+  - type: textarea
+    id: reasoning
+    attributes:
+      label: Why do you think so?
+      description: Your reasoning in plain words. Experience, observations, and hunches are all welcome; say which is which.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or examples (optional)
+      description: Cases, reports, data, or research that support your view. Links are fine.
+  - type: dropdown
+    id: context
+    attributes:
+      label: Which kinds of government does this apply to?
+      multiple: true
+      options:
+        - Well-resourced and committed
+        - Well-resourced and reluctant
+        - Small and committed
+        - Small and reluctant
+        - All of them
+        - Not sure
+  - type: input
+    id: setup
+    attributes:
+      label: Link to your setup on the website (optional)
+      description: Filled in automatically when you come from the website.
+  - type: textarea
+    id: background
+    attributes:
+      label: Your background (optional)
+      description: For example government staff, vendor, civic technologist, researcher, community member. It helps us weigh different perspectives.

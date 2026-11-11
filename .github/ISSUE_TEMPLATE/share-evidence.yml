@@ -1,0 +1,27 @@
+name: Share a case or evidence
+description: Tell us about a government that tried one of these strategies, and what happened. Successes and failures both help.
+title: "Case: "
+labels: ["evidence"]
+body:
+  - type: textarea
+    id: case
+    attributes:
+      label: What happened?
+      description: Which government or agency (if you can share it), what it tried, when, and what came of it.
+    validations:
+      required: true
+  - type: textarea
+    id: strategies
+    attributes:
+      label: Which strategies does it relate to?
+      description: For example an in-house team, strategic procurement, shared platforms, a legal mandate. See framework.md Section 4 for the full list.
+  - type: textarea
+    id: lessons
+    attributes:
+      label: What does it suggest about the models?
+      description: Does it support, contradict, or complicate an assumption? Did it last after an election? Did it spread to other places?
+  - type: input
+    id: sources
+    attributes:
+      label: Sources (optional)
+      description: Links to reports, articles, or data. Please do not share anything confidential.
