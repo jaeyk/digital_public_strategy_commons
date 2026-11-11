@@ -7,7 +7,7 @@ How can governments build more effective and responsible digital public infrastr
 [`simulate.py`](simulate.py) models a government choosing a portfolio of four strategies over a 12-year relationship with an incumbent vendor:
 
 - **In-house public-interest technology team:** grows government technical capacity.
-- **Strategic procurement:** builds negotiation leverage, especially at contract renewals.
+- **Strategic procurement:** builds negotiation leverage, especially at contract awards and renewals.
 - **Open source:** increases portability and reduces switching barriers.
 - **Responsible startup pipeline:** creates delayed entry and competition, with entry more likely when government has capacity, open standards, and procurement access.
 
