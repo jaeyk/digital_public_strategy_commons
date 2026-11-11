@@ -36,8 +36,8 @@ LEVERS: tuple[Lever, ...] = (
           "charged separately by the engine in proportion to in-house staff capacity."),
     Lever("authority", "Spend controls and service standards", ("B1", "B2", "B4"), 0.03, 0.0, False,
           "A central body that can approve or block spending and set service standards."),
-    Lever("mandate", "Legal mandate", ("B3",), 0.01, 0.0, False,
-          "Digital duties and institutions written into law."),
+    Lever("mandate", "Legal mandate (legislation)", ("B3",), 0.01, 0.0, False,
+          "Digital duties and institutions written into law through legislation. Costs little to run but takes heavy political effort to pass (see EFFORT)."),
     Lever("funding", "Product (continuous) funding", ("C1", "C2"), 0.04, 0.0, False,
           "Stable annual funding for teams and services, including central modernization funds."),
     Lever("policy", "Policy and process simplification", ("D1", "D2"), 0.03, 0.0, False,
@@ -61,6 +61,29 @@ LEVERS: tuple[Lever, ...] = (
     Lever("public_option", "Public option", ("G1", "G2"), 0.12, 0.0, False,
           "Government builds and runs the service or infrastructure itself."),
 )
+
+# Time, money, and effort each lever takes (1 = light, 2 = medium, 3 = heavy, 4 = very heavy), used for the website's
+# investment limit. This is a separate judgment from annual_cost, which only counts budget spending in
+# the engine: some levers cost little money but take years of political work.
+EFFORT_REASONS: dict[str, tuple[int, str]] = {
+    "team": (3, "Recruiting, paying, and keeping skilled staff."),
+    "insourcing": (3, "Years of hiring and migrating work off vendor systems."),
+    "authority": (2, "Setting up a central office and getting agencies to follow it."),
+    "mandate": (4, "Legislation: building a majority and a coalition, often over more than one session."),
+    "funding": (2, "Winning a stable budget line, and defending it every year."),
+    "policy": (2, "Reviewing and rewriting rules, often with lawyers and policy staff."),
+    "procurement": (2, "Redesigning contracts and building the skills to manage them."),
+    "portability": (4, "Contract negotiation with entrenched vendors: often waits for renewal and can mean legal disputes."),
+    "entrants": (2, "Running marketplaces and challenges, and supporting new vendors."),
+    "open_source": (2, "Changing how code is bought, written, and published."),
+    "maintenance": (1, "Mostly a steady budget line for upkeep."),
+    "platforms": (3, "Building and running shared services many agencies depend on."),
+    "collaboration": (2, "Agreeing on shared governance and budgets with other governments."),
+    "safeguards": (2, "Registers, assessments, accessibility work, and ways to appeal."),
+    "public_option": (3, "Building and running the whole service yourself."),
+}
+EFFORT: dict[str, int] = {key: level for key, (level, _) in EFFORT_REASONS.items()}
+assert set(EFFORT) == {lever.key for lever in LEVERS}, "every lever needs an effort rating"
 
 NOT_MODELED: dict[str, str] = {
     "H2": "Competition enforcement is usually outside the control of the jurisdiction delivering services.",

@@ -93,6 +93,24 @@ class GamesTest(unittest.TestCase):
         self.assertAlmostEqual(sum(p for _, p in state.chance_outcomes()), 1.0)
 
 
+class SiteScoresTest(unittest.TestCase):
+    def test_scores_file_matches_engine(self):
+        """docs/data/scores.bin holds the engine's scores for every plan, in the documented layout."""
+        import json
+        from pathlib import Path
+        root = Path(__file__).resolve().parents[1] / "docs" / "data"
+        spec = json.loads((root / "model.json").read_text())["scores"]
+        data = np.frombuffer((root / spec["file"]).read_bytes(), dtype="<i2")
+        n_measures, n_conditions = len(spec["measures"]), len(spec["conditions"])
+        self.assertEqual(data.size, len(spec["agencies"]) * n_conditions * n_measures * spec["plans"])
+        j = JURISDICTIONS[0]
+        masks = [0, lv.mask_of(["team", "policy"]), (1 << len(lv.KEYS)) - 1]
+        result = engine.simulate(engine.portfolio_matrix(masks), j, trials=spec["trials"], seed=spec["seed"])
+        for row, mask in enumerate(masks):
+            self.assertAlmostEqual(data[mask] / 100, result.outcome_gain[row], delta=0.006)  # stable, outcome_gain
+            self.assertAlmostEqual(data[spec["plans"] + mask] / 100, result.spend_share[row], delta=0.006)
+
+
 class DiffusionTest(unittest.TestCase):
     def test_shares_stay_on_simplex(self):
         values = np.tile(np.array([0.0, 1.0, 3.0, 2.0, 4.0]), (len(JURISDICTIONS), 1))

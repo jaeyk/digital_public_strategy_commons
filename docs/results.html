@@ -3,21 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Your results - Civic Tech Digital Public Strategy Commons</title>
+  <title>Your results - Digital Public Strategy Commons (DPSC)</title>
   <meta name="description" content="Compare your guess with what the model suggests, and see why.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232a78d6'/%3E%3Cpath d='M8 22l6-7 4 4 6-9' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 </head>
 <body>
 <main class="page">
+  <ol class="progress" aria-label="Steps">
+    <li data-step="1" class="done">Your agency</li>
+    <li data-step="2" class="done">Your goals</li>
+    <li data-step="3" class="done">Your strategies</li>
+    <li data-step="4" class="done">Your guess</li>
+    <li data-step="5" class="current" aria-current="step">Your results</li>
+  </ol>
   <header class="intro">
-    <p class="eyebrow"><a href="index.html">Civic Tech Digital Public Strategy Commons</a></p>
+    <p class="eyebrow"><a href="index.html">Digital Public Strategy Commons (DPSC)</a></p>
     <h1>Your results</h1>
-    <p class="note">A thought experiment, not a prediction.</p>
     <p class="lede" id="summary">Working it out...</p>
+    <nav class="cost-switch" id="cost-switch" aria-label="How much you can invest"></nav>
+    <p class="both-guesses"><strong>Two guesses, no predictions.</strong> Below, your guess sits next to the model’s guess. The model’s guess follows from a set of assumptions anyone can question; it does not predict what will happen.</p>
   </header>
 
   <div id="results" aria-live="polite"></div>
@@ -28,6 +36,22 @@
     <a class="button secondary" id="edit-plan" href="index.html">Change my plan</a>
     <a class="button secondary" href="index.html">Start over</a>
   </div>
+
+  <section class="network" id="network" hidden>
+    <h2>How the 15 levers connect</h2>
+    <p class="hint">Some strategies need others, some work better together, and some pull against each other. Your plan is filled in. Tap or hover a lever to see its connections.</p>
+    <ul class="network-legend" aria-label="Legend">
+      <li><svg width="44" height="14" aria-hidden="true"><line x1="2" y1="7" x2="34" y2="7" class="edge needs"/><path d="M34 2 L42 7 L34 12 Z" class="arrow needs"/></svg> needs</li>
+      <li><svg width="44" height="14" aria-hidden="true"><line x1="2" y1="7" x2="42" y2="7" class="edge together"/></svg> works better with</li>
+      <li><svg width="44" height="14" aria-hidden="true"><line x1="2" y1="7" x2="42" y2="7" class="edge against"/></svg> pulls against</li>
+    </ul>
+    <div class="network-layout">
+      <div class="network-graph" id="network-graph"></div>
+      <div class="network-panel" id="network-panel" aria-live="polite"></div>
+    </div>
+    <h3>Levers that shape all the others</h3>
+    <ul class="network-all" id="network-all"></ul>
+  </section>
 
   <section class="closing">
     <h2>Questions or ideas?</h2>

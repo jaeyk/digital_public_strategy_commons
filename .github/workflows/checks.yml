@@ -25,5 +25,5 @@ jobs:
       - name: Website data is up to date with the models
         run: |
           python -m models.export_site_data
-          git diff --exit-code -- docs/data/model.json docs/data/parity.json || {
+          git diff --exit-code -- docs/data/model.json docs/data/parity.json docs/data/scores.bin || {
             echo "docs/data is out of date. Run: python -m models.export_site_data"; exit 1; }

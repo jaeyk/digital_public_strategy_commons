@@ -46,6 +46,7 @@ INSOURCING_SCENARIOS = (
     ("Hybrid: team + procurement + insourcing + funding", ("team", "procurement", "insourcing", "funding")),
 )
 AI_YEAR = 4
+TRIALS = 40  # Monte Carlo trials per portfolio, agency type, and political condition
 
 
 def net_value(result: engine.Result, cost_weight: float) -> np.ndarray:
@@ -394,7 +395,7 @@ def ai_section(full: dict, ai: dict, args) -> list[str]:
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--years", type=int, default=16)
-    parser.add_argument("--trials", type=int, default=40)
+    parser.add_argument("--trials", type=int, default=TRIALS)
     parser.add_argument("--seed", type=int, default=20261111)
     parser.add_argument("--cost-weight", type=float, default=10.0,
                         help="outcome points per 1.0 of extra annual spending (share of own budget)")

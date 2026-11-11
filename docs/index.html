@@ -3,20 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Civic Tech Digital Public Strategy Commons</title>
+  <title>Digital Public Strategy Commons (DPSC)</title>
   <meta name="description" content="Pick your agency, your goals, and your strategies. Make a guess, then see what the model suggests.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232a78d6'/%3E%3Cpath d='M8 22l6-7 4 4 6-9' stroke='white' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 </head>
 <body>
 <main class="page">
   <header class="intro">
-    <h1>Civic Tech Digital Public Strategy Commons</h1>
-    <p class="lede">Every plan to improve government technology rests on a theory of how change happens. Try yours: pick your agency, your goals, and your strategies, make a guess, and see what our model suggests.</p>
-    <p class="note">All models are wrong. This one is useful only as a thought experiment: a way to question your assumptions, not a prediction.</p>
+    <h1>Digital Public Strategy Commons (DPSC)</h1>
+    <p class="lede">Every plan to improve government technology rests on a theory of how change happens. Try yours: pick your agency, your goals, and your strategies, make a guess, and compare it with the model’s guess.</p>
+    <p class="method" id="method">How it works: we describe a set of policy levers a government can use, combine them into every possible portfolio, and simulate each one many times based on assumed interactions between strategies.</p>
+    <details class="levers-note">
+      <summary id="levers-summary">What are the policy levers?</summary>
+      <ul id="levers-list"></ul>
+    </details>
+    <p class="note">All models are wrong. This one is useful only as a thought experiment: a way to question your assumptions. Your guess and the model’s guess are both guesses, not predictions.</p>
   </header>
 
   <ol class="progress" aria-label="Steps">
@@ -24,6 +29,7 @@
     <li data-step="2">Your goals</li>
     <li data-step="3">Your strategies</li>
     <li data-step="4">Your guess</li>
+    <li data-step="5">Your results</li>
   </ol>
 
   <section class="step" data-step="1">
@@ -39,17 +45,41 @@
     <h2>What do you most want to achieve?</h2>
     <p class="hint">Choose one or more.</p>
     <div class="cards" id="goals"></div>
+    <h2 class="second-question">How much can you invest?</h2>
+    <p class="hint">Every strategy takes time, money, and effort. What you can invest limits how many you can take on.</p>
+    <div class="cards" id="levels" role="radiogroup" aria-label="How much you can invest"></div>
+    <details class="effort-panel budget-panel" id="budget-panel">
+      <summary id="budget-summary">Customize your budget</summary>
+      <p class="hint">Budgets and priorities differ by agency. Set your own instead of the three choices above.</p>
+      <div class="budget-setting">
+        <label for="budget-range"><strong>Effort you can spend</strong><span>Each strategy uses 1 to 4 dots of time, money, and effort.</span></label>
+        <div class="range-row"><input type="range" id="budget-range" min="1" max="20" step="1"><output id="budget-value" for="budget-range"></output></div>
+      </div>
+      <div class="budget-setting">
+        <p><strong>How much should spending count against results?</strong></p>
+        <div class="effort-choices" id="weight-choices" role="radiogroup" aria-label="How much spending counts"></div>
+      </div>
+      <button type="button" class="button secondary small-button" id="budget-reset">Use the choice above instead</button>
+    </details>
   </section>
 
   <section class="step" data-step="3" hidden>
     <h2>Which strategies would you try?</h2>
-    <p class="hint">Choose the ones you would start with. Most plans have two to five.</p>
+    <p class="hint">Each strategy shows the time, money, and effort it takes. Choose what fits your investment.</p>
+    <div class="budget" id="budget" aria-live="polite"></div>
+    <details class="effort-panel" id="effort-panel">
+      <summary>Adjust effort for your agency</summary>
+      <p class="hint">Effort depends on your agency. Passing a law may be routine in one place and nearly impossible in another. These ratings are our starting guesses; change any of them to fit your situation.</p>
+      <div id="effort-rows"></div>
+      <button type="button" class="button secondary small-button" id="effort-reset">Reset to our starting guesses</button>
+    </details>
     <div class="cards strategies" id="strategies"></div>
   </section>
 
   <section class="step" data-step="4" hidden>
-    <h2>How well do you think your plan will do?</h2>
+    <h2>How do you think your plan compares?</h2>
     <p class="hint" id="plan-summary"></p>
+    <p class="hint">Compared with other plans that use the same number of strategies, how will yours do for each goal?</p>
     <div id="guesses"></div>
   </section>
 

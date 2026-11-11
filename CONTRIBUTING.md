@@ -53,7 +53,7 @@ python -m models.run_all               # rerun the models and reports (about 90 
 python -m models.export_site_data      # refresh the website's data
 python -m unittest discover tests      # Python tests
 node tests/site_engine.test.mjs        # check the website engine still matches Python
-./preview_site.sh                      # look at the website at http://localhost:8000
+./preview_website.sh                      # look at the website at http://localhost:8000
 ```
 
 If you change the engine's equations, change both `models/common/engine.py` and `docs/assets/engine.js`; the Node test will fail until they agree. Pull requests run these checks automatically.
